@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HighlightController;
 use App\Http\Controllers\MenuGroupController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +71,25 @@ Route::middleware(['isLoggedin'])->group (function() {
 
     Route::get('/promo/deleteuser/{promo_id}/{id}', [PromoController::class, 'delete'])->name('deletePromoUser');
 
+
+
+    Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation');
+
+    Route::get('/addreservation', [ReservationController::class, 'create'])->name('createReservation');
+
+    Route::post('/addreservation', [ReservationController::class, 'store'])->name('storeReservation');
+
+    Route::get('/reservation/delete/{id}', [ReservationController::class, 'destroy'])->name('deleteReservation');
+
+
+
+    Route::get('/highlight', [HighlightController::class, 'index'])->name('highlight');
+
+    Route::get('/addhighlight', [HighlightController::class, 'create'])->name('createHighlight');
+
+    Route::post('/addhighlight', [HighlightController::class, 'store'])->name('storeHighlight');
+
+    Route::get('/highlight/delete/{id}', [HighlightController::class, 'destroy'])->name('deleteHighlight');
 
 
 });

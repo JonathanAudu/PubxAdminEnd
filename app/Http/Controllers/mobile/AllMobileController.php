@@ -42,12 +42,15 @@ class AllMobileController extends Controller
             }
 
         $contacts = DB::table('app_info')->first();
-
+        $reservations = DB::table('reservations')->get();
+        $highlights = DB::table('highlights')->get();
 
         $allData['menu']=$data;
         $allData['featured'] = $featured;
         $allData['ads']=$ads;
         $allData['contacts']=$contacts;
+        $allData['reservations']=$reservations;
+        $allData['highlights']=$highlights;
 
         return $allData;
     }
@@ -59,5 +62,26 @@ class AllMobileController extends Controller
       $name = $request->name;
       $msg = $request->msg;
       //TODO we will send mail
+    }
+
+    public function getUserPromoData($id){
+        $user = DB::table('users')->select('id','name','phone_number','email')->where('id',$id)->first();
+        $promos = DB::table('promo_users')
+                ->leftJoin('promos', 'promo_users.promo_code', '=', 'promos.promo_code')
+                ->where('promo_users.user_id', $id)->get();
+        return ['user'=>$user, 'promos'=>$promos];
+    }
+
+    public function setUserPromoData(Request $request){
+
+        $promo = DB::table('promo_users')
+                ->where('id', $request->id)
+                ->update(['is_used' => 1]);
+                if($promo){
+                    return "success";
+                }else{
+                    return "failed";
+                }
+        return $promo;
     }
 }

@@ -32,13 +32,15 @@ Route::post('/contact-us', [AllMobileController::class, 'contactUs']);
 
 Route::get('/get-all-data', [AllMobileController::class, 'getAllData']);
 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/signout', [AuthController::class, 'signout']);
     Route::get('/get-user', [UserController::class, 'getUserDetails']);
     Route::post('/user-update', [UserController::class, 'updateUser']);
     Route::post('/promo-code', [PromoController::class, 'promo']);
     Route::get('/get-user-promos', [PromoController::class, 'getUserPromo']);
-
+    Route::get('/get-user-promo-data/{id}', [AllMobileController::class, 'getUserPromoData']);
+    Route::get('/set-user-promo-data', [AllMobileController::class, 'setUserPromoData']);
 });
 
 

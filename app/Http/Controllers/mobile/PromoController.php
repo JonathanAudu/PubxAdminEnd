@@ -13,6 +13,7 @@ class PromoController extends Controller
 {
     public function promo(Request $request)
     {
+        $unique_id = rand(1000000000,9999999999);
         $promo_code = $request->promo_code;
         $user_id = Auth::user()->id;
         $promodata = Promo::where('promo_code', $promo_code)->first();
@@ -26,6 +27,7 @@ class PromoController extends Controller
                     if ($promo) {
                         $save_promo = new PromoUser;
                         $save_promo->user_id = $user_id;
+                        $save_promo->unique_id = $unique_id;
                         $save_promo->promo_code = $request->promo_code;
                         $save_promo->save();
                         if($save_promo){
