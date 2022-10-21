@@ -13,8 +13,8 @@ class AllMobileController extends Controller
 {
     public function getAllData(){
         $allData = [];
-        $menu = MenuGroup::all();
-        foreach ($menu as $menu) {
+        $data = MenuGroup::all();
+        foreach ($data as $menu) {
             if (Storage::disk('public_index')->exists('images/'.$menu->photo)) {
                 $menu->img = "data:image/png;base64, ".base64_encode(Storage::disk('public_index')->get('images/'.$menu->photo));
             }
@@ -41,9 +41,13 @@ class AllMobileController extends Controller
                 }
             }
 
+        $contacts = DB::table('app_info')->first();
+
+
+        $allData['menu']=$data;
         $allData['featured'] = $featured;
-        $allData['menu']=$menu;
         $allData['ads']=$ads;
+        $allData['contacts']=$contacts;
 
         return $allData;
     }
