@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "60716ffd-96ab-43cb-b5ea-8d97d4637ef1",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://10.0.0.229/DEVS/PubxAdminEnd/public/api/register",
+    "url": "http://10.0.0.229/DEVS/PubxAdminEnd/public/api/get-user-promos",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-18T14:43:31.699Z",
+    "modified": "2022-10-19T15:45:56.467Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "password",
+          "value": "12345",
+          "isDisabled": true
+        },
+        {
+          "name": "phone_number",
+          "value": "22222222222",
+          "isDisabled": true
+        },
+        {
+          "name": "email",
+          "value": "1@1.com",
+          "isDisabled": true
+        },
+        {
+          "name": "promo_code",
+          "value": " 22342",
+          "isDisabled": true
+        }
+      ]
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "4|5zvgrm4wnJLzM9u6Fvve2q0LCdXAE4tzQB2nPB3P"
+    },
+    "tests": []
+  }
+]
